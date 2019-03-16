@@ -4,24 +4,28 @@ import coreStyles from "lib/core/styles";
 export default (theme: Theme) => ({
   ...coreStyles(theme),
   root: {
-    flexWrap: "wrap" as "wrap",
-    display: "flex" as "flex",
+    "flexWrap": "wrap" as "wrap",
+    "display": "flex" as "flex",
     "& .dz-image-preview": {
       position: "relative" as "relative",
-      flexBasis: `${(1 / 3) * 100}%`,
+      flexBasis: `100%`,
+    },
+    "& .dz-file-preview": {
+      position: "relative" as "relative",
+      flexBasis: `100%`,
+    },
+    "& .dz-image": {
+      display: "none" as "none",
     },
     "& .dz-image img": {
       borderRadius: 3,
       width: "100%",
     },
     "& .dz-details": {
-      backgroundColor: `rgba(255, 255, 255, 0.5)`,
-      position: "absolute" as "absolute",
+      fontSize: theme.typography.caption.fontSize,
+      backgroundColor: theme.palette.grey[100],
+      fontFamily: theme.typography.fontFamily,
       padding: theme.spacing.unit,
-      width: "100%",
-      bottom: 0,
-      right: 0,
-      left: 0,
     },
     "& .dz-success-mark": {
       display: "none" as "none",

@@ -22,6 +22,7 @@ class Dropzone extends Component<IDropzoneProps> {
       url: "/",
       autoProcessQueue: false,
       previewsContainer: "#dropzone-preview",
+      createImageThumbnails: false,
     });
 
     dropzone.on("addedfile", (file: DropzoneFile) => onAddFile(file));

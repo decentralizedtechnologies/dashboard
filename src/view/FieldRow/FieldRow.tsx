@@ -3,11 +3,13 @@ import { AddCircleOutline, RemoveCircleOutline } from "@material-ui/icons";
 import classnames from "classnames";
 import Container from "component/Container";
 import React, { Component } from "react";
+import { IFieldRow } from "store/BAR/IStore";
 import styles from "./styles";
 
 export interface IFieldRowProps {
   classes?: any;
   index: number;
+  field: IFieldRow;
   addFieldRow: (type: string) => void;
   removeFieldRow: (index: number) => void;
   updateFieldRow: (index: number, key: string, value: string) => void;
@@ -41,7 +43,7 @@ class FieldRow extends Component<IFieldRowProps, IFieldRowState> {
 
   public handleClose = () => {
     const {
-      addFieldRow
+      addFieldRow,
     } = this.props;
     addFieldRow("text");
     this.setAnchorEl(null);
@@ -50,7 +52,7 @@ class FieldRow extends Component<IFieldRowProps, IFieldRowState> {
   public onUpdateFieldRow = (evt: React.ChangeEvent<HTMLInputElement>, key: string) => {
     const {
       index,
-      updateFieldRow
+      updateFieldRow,
     } = this.props;
     updateFieldRow(index, key, evt.target.value);
   }
@@ -70,6 +72,7 @@ class FieldRow extends Component<IFieldRowProps, IFieldRowState> {
     const {
       classes,
       index,
+      field,
     } = this.props;
     return (
       <Container x={2} y={3}>
@@ -80,6 +83,7 @@ class FieldRow extends Component<IFieldRowProps, IFieldRowState> {
               <Input
                 id={`title-${index}`}
                 inputRef={(input: HTMLInputElement) => this.titleInput = input}
+                defaultValue={field.key}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.onUpdateFieldRow(e, "key")} />
             </FormControl>
           </Grid>
@@ -88,6 +92,7 @@ class FieldRow extends Component<IFieldRowProps, IFieldRowState> {
               <InputLabel htmlFor={`value-${index}`}>Value</InputLabel>
               <Input
                 id={`value-${index}`}
+                defaultValue={field.value}
                 onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.onUpdateFieldRow(e, "value")} />
             </FormControl>
           </Grid>

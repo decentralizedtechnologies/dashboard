@@ -1,5 +1,9 @@
+import { DropzoneFile } from "dropzone";
+
 export default interface IStore {
   fieldRows: IFieldRow[];
+  files: IFieldRow;
+  dropzoneFiles: Array<Partial<DropzoneFile>>;
   assetOutput: string;
   schemaOuput: string;
   isOutputOnDisplay: boolean;
@@ -7,8 +11,8 @@ export default interface IStore {
 }
 
 export interface IFieldRow {
-  [key: string]: string;
+  [key: string]: string | string[];
   key: string;
-  value: string;
+  value: string | string[];
   type: string;
 }

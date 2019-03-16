@@ -158,16 +158,16 @@ class NewAsset extends Component<INewAssetProps> {
         </Container>
         <Container x={2} y={2}>
           <Grid container spacing={16}>
-            <Grid item lg={7}>
-              <Dropzone onAddFile={addFileToAssetOutput} />
-            </Grid>
-            <Grid item lg={5}>
+            <Grid item lg={4}>
               <DropzonePreview />
+            </Grid>
+            <Grid item lg={8}>
+              <Dropzone onAddFile={addFileToAssetOutput} />
             </Grid>
           </Grid>
         </Container>
-        {map(fieldRows, (row: IFieldRow, index: number) => (
-          <FieldRow key={index} index={index} />
+        {map(fieldRows, (field: IFieldRow, index: number) => (
+          <FieldRow key={index} index={index} field={field} />
         ))}
       </Paper>
     );
