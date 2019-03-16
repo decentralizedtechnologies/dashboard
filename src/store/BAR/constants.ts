@@ -1,0 +1,10 @@
+export const BAR = "BAR/BAR";
+
+export const BAR_ADD_FIELD_ROW = `${BAR}_ADD_FIELD_ROW`;
+export const BAR_REMOVE_FIELD_ROW = `${BAR}_REMOVE_FIELD_ROW`;
+export const BAR_UPDATE_FIELD_ROW = `${BAR}_UPDATE_FIELD_ROW`;
+
+export const BAR_TOGGLE_OUTPUT_VIEW = `${BAR}_TOGGLE_OUTPUT_VIEW`;
+export const BAR_TOGGLE_PUBLISH_VIEW = `${BAR}_TOGGLE_PUBLISH_VIEW`;
+
+export const NAMESPACE = "BARReducer";
