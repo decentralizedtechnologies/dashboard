@@ -100,7 +100,7 @@ export const addFileToAssetOutput = (file: DropzoneFile) => (
       try {
         const {
           hash,
-        } = await ipfsService.upload(reader.result as ArrayBuffer, file);
+        } = await ipfsService.upload(Buffer.from(reader.result as ArrayBuffer));
         (files.value as string[]).push(hash);
         dispatch(addIpfsFileAction({ files }));
         dispatch(addFieldRowAction(makeAssetOutput(fieldRows, files)));

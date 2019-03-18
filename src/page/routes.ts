@@ -11,6 +11,8 @@ const routes: IRoute = {
   BAR: {
     root: "/BAR",
     newAsset: "/new-asset",
+    assetDetails: "/asset-details",
+    assetLookup: "/asset-lookup",
   },
 };
 
@@ -19,5 +21,7 @@ export const route = (root: string, child: string): string => {
 };
 
 export const BARNewAssetRoute = route("BAR", "newAsset");
+export const BARAssetDetailsRoute = route("BAR", "assetDetails");
+export const BARAssetLookupRoute = route("BAR", "assetLookup");
 
 export default routes;

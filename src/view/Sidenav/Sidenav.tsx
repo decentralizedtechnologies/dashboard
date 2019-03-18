@@ -4,7 +4,7 @@ import Drawer from "component/Drawer";
 import ListItemText from "component/Drawer/ListItemText";
 import RouterLink from "component/RouterLink";
 import Typography from "component/Typography";
-import { BARNewAssetRoute } from "page/routes";
+import { BARAssetLookupRoute, BARNewAssetRoute } from "page/routes";
 import React, { Component } from "react";
 import styles from "./styles";
 
@@ -95,12 +95,12 @@ class Sidenav extends Component<ISidenavProps> {
           </ListItem>
           <ListItem button>
             <ListItemText
-              secondary="Schemas"
+              secondary={<RouterLink to={BARAssetLookupRoute} content="Asset Lookup" />}
             />
           </ListItem>
           <ListItem button>
             <ListItemText
-              secondary="Asset lookup"
+              secondary="Schemas"
             />
           </ListItem>
         </List>

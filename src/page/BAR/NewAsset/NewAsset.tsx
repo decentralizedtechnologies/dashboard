@@ -1,12 +1,10 @@
-import { Card, CardActions, CardContent, Grid, withStyles } from "@material-ui/core";
-import classnames from "classnames";
+import { Grid, withStyles } from "@material-ui/core";
 import AppContainer from "component/AppContainer";
 import Button from "component/Button";
 import Container from "component/Container";
 import Dropzone from "component/Dropzone";
 import DropzonePreview from "component/Dropzone/DropzonePreview";
 import Paper from "component/Paper";
-import Typography from "component/Typography";
 import PageTitle from "component/Typography/PageTitle";
 import { DropzoneFile } from "dropzone";
 import hljs from "highlight.js/lib/highlight";
@@ -15,6 +13,7 @@ import "highlight.js/styles/dracula.css";
 import map from "lodash/map";
 import React, { Component } from "react";
 import { IFieldRow } from "store/BAR/IStore";
+import EthereumCard from "view/BlockchainCard/EthereumCard/EthereumCard";
 import FieldRow from "view/FieldRow";
 import Header from "view/Header/Header";
 import Sidenav from "view/Sidenav/Sidenav";
@@ -30,6 +29,7 @@ export interface INewAssetProps {
   isPublishOnDisplay: boolean;
   toggleOutputView: () => void;
   togglePublishView: () => void;
+  publishAssetContract: () => void;
   addFileToAssetOutput: (file: DropzoneFile) => void;
 }
 
@@ -56,6 +56,7 @@ class NewAsset extends Component<INewAssetProps> {
       toggleOutputView,
       togglePublishView,
       addFileToAssetOutput,
+      publishAssetContract,
       classes,
     } = this.props;
 
@@ -99,8 +100,15 @@ class NewAsset extends Component<INewAssetProps> {
             <Grid container justify="flex-end" spacing={16}>
               <Grid item>
                 <Button
-                  onClick={toggleOutputView}
+                  onClick={togglePublishView}
                   content="Back"
+                  color="primary"
+                  variant="outlined" />
+              </Grid>
+              <Grid item>
+                <Button
+                  onClick={toggleOutputView}
+                  content="See output"
                   color="primary"
                   variant="outlined" />
               </Grid>
@@ -109,34 +117,7 @@ class NewAsset extends Component<INewAssetProps> {
           <Container x={2} y={2}>
             <Grid container spacing={16}>
               <Grid item lg={4}>
-                <Card>
-                  <CardContent>
-                    <Grid container className={classnames(classes.marginBottomSm)}>
-                      <Grid item xs={1}>
-                        <img src="/svg/ethereum/icon.svg" className={classnames(classes.imgFluid)} />
-                      </Grid>
-                      <Grid item xs={11}>
-                        <Typography variant="h5" component="h5" content="Ethereum" />
-                      </Grid>
-                    </Grid>
-                    <Typography component="p" content="Store the data in a Solidity smart contract" />
-                  </CardContent>
-                  <CardActions disableActionSpacing>
-                    <Grid container spacing={8}>
-                      <Grid item>
-                        <Button size="small" content="Learn More" />
-                      </Grid>
-                      <Grid item>
-                        <Button
-                          content="Publish to Ethereum"
-                          size="small"
-                          variant="contained"
-                          color="primary"
-                        />
-                      </Grid>
-                    </Grid>
-                  </CardActions>
-                </Card>
+                <EthereumCard onMainAction={publishAssetContract} />
               </Grid>
             </Grid>
           </Container>
@@ -146,11 +127,18 @@ class NewAsset extends Component<INewAssetProps> {
     return (
       <Paper>
         <Container x={2} y={2}>
-          <Grid container justify="flex-end">
+          <Grid container justify="flex-end" spacing={16}>
             <Grid item>
               <Button
                 onClick={toggleOutputView}
                 content="See output"
+                color="primary"
+                variant="outlined" />
+            </Grid>
+            <Grid item>
+              <Button
+                onClick={togglePublishView}
+                content="Save to blockchain"
                 color="primary"
                 variant="contained" />
             </Grid>
@@ -158,11 +146,11 @@ class NewAsset extends Component<INewAssetProps> {
         </Container>
         <Container x={2} y={2}>
           <Grid container spacing={16}>
-            <Grid item lg={4}>
-              <DropzonePreview />
-            </Grid>
             <Grid item lg={8}>
               <Dropzone onAddFile={addFileToAssetOutput} />
+            </Grid>
+            <Grid item lg={4}>
+              <DropzonePreview />
             </Grid>
           </Grid>
         </Container>

@@ -20,6 +20,9 @@
       "service/*": [
         "src/service/*"
       ],
+      "contract/*": [
+        "src/contract/*"
+      ]
     }
   }
 }

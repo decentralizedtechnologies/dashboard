@@ -8,9 +8,21 @@ const paddingXY = (theme: Theme) => {
       paddingRight: theme.spacing.unit * size,
       paddingLeft: theme.spacing.unit * size,
     };
+    padding[`paddingXLeft${size}`] = {
+      paddingLeft: theme.spacing.unit * size,
+    };
+    padding[`paddingXRight${size}`] = {
+      paddingRight: theme.spacing.unit * size,
+    };
     padding[`paddingY${size}`] = {
       paddingBottom: theme.spacing.unit * size,
       paddingTop: theme.spacing.unit * size,
+    };
+    padding[`paddingYTop${size}`] = {
+      paddingTop: theme.spacing.unit * size,
+    };
+    padding[`paddingYBottom${size}`] = {
+      paddingBottom: theme.spacing.unit * size,
     };
   });
   return padding;

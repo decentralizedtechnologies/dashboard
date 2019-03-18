@@ -1,10 +1,11 @@
+import axios, { AxiosPromise } from "axios";
 import ipfsClient from "ipfs-http-client";
 
 const ipfs = ipfsClient({ host: "ipfs.infura.io", port: "5001", protocol: "https" });
 
 export default class IPFSService {
 
-  public upload(fileContent: ArrayBuffer, file: File): Promise<any> {
+  public upload(content: Buffer): Promise<any> {
     return new Promise((resolve, reject) => {
       const stream = ipfs.addReadableStream();
       stream.on("data", (ipfsResponse: any) => {
@@ -16,9 +17,12 @@ export default class IPFSService {
       stream.on("error", (error: any) => {
         reject(error);
       });
-      stream.write(Buffer.from(fileContent));
+      stream.write(content);
       stream.end();
     });
   }
 
+  public get(hash: string): AxiosPromise<any> {
+    return axios.get(`https://ipfs.infura.io/ipfs/${hash}`);
+  }
 }

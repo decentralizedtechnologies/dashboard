@@ -11,6 +11,8 @@ export default {
   isPublishOnDisplay: false,
   dropzoneFiles: [],
   files,
+  assetReference: "",
+  versions: [],
   ...makeAssetOutput([{
     key: "",
     value: "",

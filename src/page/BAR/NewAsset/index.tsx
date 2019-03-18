@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { addFieldRow, addFileToAssetOutput, toggleOutputView, togglePublishView } from "store/BAR/actions";
+import { publishAssetContract } from "store/BAR/ethereum";
 import { assetOutputProp, fieldRowsProp, isOutputOnDisplayProp, isPublishOnDisplayProp, schemaOutputProp } from "store/BAR/selectors";
 import NewAsset from "./NewAsset";
 
@@ -20,6 +21,7 @@ const mapDispatchToProps = (dispatch: any) => (
     toggleOutputView,
     togglePublishView,
     addFileToAssetOutput,
+    publishAssetContract,
   }, dispatch)
 );
 

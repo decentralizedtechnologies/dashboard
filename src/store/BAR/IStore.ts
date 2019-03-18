@@ -6,6 +6,8 @@ export default interface IStore {
   dropzoneFiles: Array<Partial<DropzoneFile>>;
   assetOutput: string;
   schemaOuput: string;
+  assetReference: string;
+  versions: IAssetData[];
   isOutputOnDisplay: boolean;
   isPublishOnDisplay: boolean;
 }
@@ -15,4 +17,9 @@ export interface IFieldRow {
   key: string;
   value: string | string[];
   type: string;
+}
+
+export interface IAssetData {
+  Files: IFieldRow;
+  Asset: IFieldRow[];
 }
