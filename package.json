@@ -6,6 +6,7 @@
     "@material-ui/core": "^3.9.2",
     "@material-ui/icons": "^3.0.2",
     "@types/classnames": "^2.2.7",
+    "@types/dotenv": "^6.1.0",
     "@types/dropzone": "^5.0.4",
     "@types/highlight.js": "^9.12.3",
     "@types/jest": "^24.0.9",

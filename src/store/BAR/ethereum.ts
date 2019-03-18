@@ -1,6 +1,7 @@
 import { AxiosResponse } from "axios";
 import { push } from "connected-react-router";
-import AssetContract from "contract/BAR/AssetContract";
+import OwnableAssetContract from "contract/BAR/OwnableAssetContract";
+import OwnableAssetRegistryContract from "contract/BAR/OwnableAssetRegistryContract";
 import map from "lodash/map";
 import reverse from "lodash/reverse";
 import { BARAssetLookupRoute } from "page/routes";
@@ -32,10 +33,11 @@ export const getAssetDetails = () => (
       return;
     }
     try {
-      const assetContract = new AssetContract();
-      await assetContract.web3.enableEthereumBrowser();
-      assetContract.setAddress(assetReference);
-      const contractData = await assetContract.getData();
+      const contract = new OwnableAssetContract();
+      await contract.web3.enableEthereumBrowser();
+      contract.setAddress(assetReference);
+      const versionIndex = await contract.getVersionIndex();
+      const contractData = await Promise.all(contract.getData(versionIndex))
       if (contractData.length === 0) {
         // TODO display that no contractData was found in the contract
         return;
@@ -65,12 +67,12 @@ export const publishAssetContract = () => (
     const files = filesProp(state);
     const output = makeAssetOutput(fieldRows, files);
     try {
-      const assetContract = new AssetContract();
-      await assetContract.web3.enableEthereumBrowser();
+      const contract = new OwnableAssetRegistryContract();
+      await contract.web3.enableEthereumBrowser();
       const {
         hash,
       } = await ipfsService.upload(Buffer.from(output.assetOutput as string));
-      const receipt = await assetContract.deploy(hash);
+      const receipt = await contract.newAsset(hash);
       dispatch(setAssetReferenceAction({
         assetReference: receipt.contractAddress,
       }));

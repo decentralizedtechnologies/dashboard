@@ -82,14 +82,7 @@ class NewAsset extends Component<INewAssetProps> {
             </Grid>
           </Container>
           <Container x={2} y={2}>
-            <Grid container spacing={16}>
-              <Grid item lg={6}>
-                <pre id="schema-output" className="code"><code>{schemaOutput}</code></pre>
-              </Grid>
-              <Grid item lg={6}>
-                <pre id="data-output" className="code"><code>{assetOutput}</code></pre>
-              </Grid>
-            </Grid>
+            <pre id="data-output" className="code"><code>{assetOutput}</code></pre>
           </Container>
         </Paper>
       );

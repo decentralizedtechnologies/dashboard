@@ -18,13 +18,18 @@ export const removeDropzoneFileAction = createAction(BAR_REMOVE_DROPZONE_FILE);
 
 export const makeAssetOutput = (fieldRows: IFieldRow[], files: IFieldRow): Partial<IStore> => {
   const asset = {
-    Files: files,
     Asset: fieldRows,
+    Files: files,
+  };
+  const schema = schemaGenerator.json("OwnableAsset", asset);
+  asset["Schema"] = {
+    key: schema["$schema"],
+    value: schema,
+    type: "schema",
   };
   return {
     fieldRows,
     assetOutput: JSON.stringify(asset, null, 2),
-    schemaOutput: JSON.stringify(schemaGenerator.json("Asset", asset), null, 2),
   } as Partial<IStore>;
 };
 

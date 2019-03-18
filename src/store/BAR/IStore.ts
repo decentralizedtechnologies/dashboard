@@ -20,6 +20,7 @@ export interface IFieldRow {
 }
 
 export interface IAssetData {
+  Schema: IFieldRow;
   Files: IFieldRow;
   Asset: IFieldRow[];
 }

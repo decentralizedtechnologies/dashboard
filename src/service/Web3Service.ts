@@ -12,11 +12,10 @@ export default class Web3Service {
   public instance: Web3;
   public network: string;
 
-  constructor(network: string = process.env.ETHEREUM_NETWORK as string) {
+  constructor(network: string = process.env.REACT_APP_ETHEREUM_NETWORK) {
     this.network = network;
     const provider = new Web3.providers.HttpProvider(network);
-    this.instance = new Web3(provider, undefined, {
-    });
+    this.instance = new Web3(provider, undefined, {});
     this.utils = this.instance.utils;
     this.eth = this.instance.eth;
   }
