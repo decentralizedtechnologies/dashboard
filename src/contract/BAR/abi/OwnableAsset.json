@@ -1,406 +1,409 @@
 {
-    "contractName": "OwnableAsset",
-    "abi": [
+  "contractName": "OwnableAsset",
+  "abi": [
+    {
+      "constant": false,
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
         {
-            "constant": false,
-            "inputs": [],
-            "name": "renounceOwnership",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
-                    "name": "_data",
-                    "type": "string"
-                }
-            ],
-            "name": "appendData",
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "bool"
-                }
-            ],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": true,
-            "inputs": [],
-            "name": "owner",
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "address"
-                }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "constant": true,
-            "inputs": [],
-            "name": "isOwner",
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "bool"
-                }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "constant": true,
-            "inputs": [
-                {
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "name": "data",
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "string"
-                }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "constant": false,
-            "inputs": [
-                {
-                    "name": "newOwner",
-                    "type": "address"
-                }
-            ],
-            "name": "transferOwnership",
-            "outputs": [],
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "function"
-        },
-        {
-            "constant": true,
-            "inputs": [],
-            "name": "versionIndex",
-            "outputs": [
-                {
-                    "name": "",
-                    "type": "uint256"
-                }
-            ],
-            "payable": false,
-            "stateMutability": "view",
-            "type": "function"
-        },
-        {
-            "payable": false,
-            "stateMutability": "nonpayable",
-            "type": "fallback"
-        },
-        {
-            "anonymous": false,
-            "inputs": [
-                {
-                    "indexed": true,
-                    "name": "previousOwner",
-                    "type": "address"
-                },
-                {
-                    "indexed": true,
-                    "name": "newOwner",
-                    "type": "address"
-                }
-            ],
-            "name": "OwnershipTransferred",
-            "type": "event"
-        },
-        {
-            "anonymous": false,
-            "inputs": [
-                {
-                    "indexed": true,
-                    "name": "data",
-                    "type": "string"
-                },
-                {
-                    "indexed": true,
-                    "name": "versionIndex",
-                    "type": "uint256"
-                }
-            ],
-            "name": "AppendedData",
-            "type": "event"
+          "name": "_data",
+          "type": "string"
         }
-    ],
-    "bytecode": "0x6080604081905260028054600160a060020a031916331790819055600160a060020a0316906000907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a36105d68061005b6000396000f3fe608060405234801561001057600080fd5b506004361061009a576000357c0100000000000000000000000000000000000000000000000000000000900480638f32d59b116100785780638f32d59b14610182578063f0ba84401461018a578063f2fde38b1461021c578063ff1d2712146102425761009a565b8063715018a61461009c5780637a59dc80146100a45780638da5cb5b1461015e575b005b61009a61025c565b61014a600480360360208110156100ba57600080fd5b8101906020810181356401000000008111156100d557600080fd5b8201836020820111156100e757600080fd5b8035906020019184600183028401116401000000008311171561010957600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295506102c6945050505050565b604080519115158252519081900360200190f35b6101666103a7565b60408051600160a060020a039092168252519081900360200190f35b61014a6103b7565b6101a7600480360360208110156101a057600080fd5b50356103c8565b6040805160208082528351818301528351919283929083019185019080838360005b838110156101e15781810151838201526020016101c9565b50505050905090810190601f16801561020e5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61009a6004803603602081101561023257600080fd5b5035600160a060020a031661046f565b61024a61048e565b60408051918252519081900360200190f35b6102646103b7565b151561026f57600080fd5b600254604051600091600160a060020a0316907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a36002805473ffffffffffffffffffffffffffffffffffffffff19169055565b6001805480820180835560009283528351909161030c917fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6909101906020860190610512565b50506001546000190160008190556040518351849190819060208401908083835b6020831061034c5780518252601f19909201916020918201910161032d565b5181516020939093036101000a60001901801990911692169190911790526040519201829003822093507ff473313a26f504e39f730d568ace3fcdeea7e5c8bcaa13fc520fb6fe4e5e380392506000919050a3506001919050565b600254600160a060020a03165b90565b600254600160a060020a0316331490565b60018054829081106103d657fe5b600091825260209182902001805460408051601f60026000196101006001871615020190941693909304928301859004850281018501909152818152935090918301828280156104675780601f1061043c57610100808354040283529160200191610467565b820191906000526020600020905b81548152906001019060200180831161044a57829003601f168201915b505050505081565b6104776103b7565b151561048257600080fd5b61048b81610494565b50565b60005481565b600160a060020a03811615156104a957600080fd5b600254604051600160a060020a038084169216907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a36002805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0392909216919091179055565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061055357805160ff1916838001178555610580565b82800160010185558215610580579182015b82811115610580578251825591602001919060010190610565565b5061058c929150610590565b5090565b6103b491905b8082111561058c576000815560010161059656fea165627a7a72305820b453b077ecc84282265ba69a650fe307c1a3cf13034e2fa5940bb06359e09d3e0029",
-    "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061009a576000357c0100000000000000000000000000000000000000000000000000000000900480638f32d59b116100785780638f32d59b14610182578063f0ba84401461018a578063f2fde38b1461021c578063ff1d2712146102425761009a565b8063715018a61461009c5780637a59dc80146100a45780638da5cb5b1461015e575b005b61009a61025c565b61014a600480360360208110156100ba57600080fd5b8101906020810181356401000000008111156100d557600080fd5b8201836020820111156100e757600080fd5b8035906020019184600183028401116401000000008311171561010957600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295506102c6945050505050565b604080519115158252519081900360200190f35b6101666103a7565b60408051600160a060020a039092168252519081900360200190f35b61014a6103b7565b6101a7600480360360208110156101a057600080fd5b50356103c8565b6040805160208082528351818301528351919283929083019185019080838360005b838110156101e15781810151838201526020016101c9565b50505050905090810190601f16801561020e5780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61009a6004803603602081101561023257600080fd5b5035600160a060020a031661046f565b61024a61048e565b60408051918252519081900360200190f35b6102646103b7565b151561026f57600080fd5b600254604051600091600160a060020a0316907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a36002805473ffffffffffffffffffffffffffffffffffffffff19169055565b6001805480820180835560009283528351909161030c917fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf6909101906020860190610512565b50506001546000190160008190556040518351849190819060208401908083835b6020831061034c5780518252601f19909201916020918201910161032d565b5181516020939093036101000a60001901801990911692169190911790526040519201829003822093507ff473313a26f504e39f730d568ace3fcdeea7e5c8bcaa13fc520fb6fe4e5e380392506000919050a3506001919050565b600254600160a060020a03165b90565b600254600160a060020a0316331490565b60018054829081106103d657fe5b600091825260209182902001805460408051601f60026000196101006001871615020190941693909304928301859004850281018501909152818152935090918301828280156104675780601f1061043c57610100808354040283529160200191610467565b820191906000526020600020905b81548152906001019060200180831161044a57829003601f168201915b505050505081565b6104776103b7565b151561048257600080fd5b61048b81610494565b50565b60005481565b600160a060020a03811615156104a957600080fd5b600254604051600160a060020a038084169216907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a36002805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0392909216919091179055565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061055357805160ff1916838001178555610580565b82800160010185558215610580579182015b82811115610580578251825591602001919060010190610565565b5061058c929150610590565b5090565b6103b491905b8082111561058c576000815560010161059656fea165627a7a72305820b453b077ecc84282265ba69a650fe307c1a3cf13034e2fa5940bb06359e09d3e0029",
-    "sourceMap": "252:47:4:-;;;;;515:6:7;:19;;-1:-1:-1;;;;;;515:19:7;524:10;515:19;;;;;-1:-1:-1;;;;;582:6:7;;515;;549:40;;515:6;;549:40;252:47:4;;;;;;",
-    "deployedSourceMap": "252:47:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;252:47:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1423:137:7;;;:::i;508:205:6:-;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;508:205:6;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;508:205:6;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;508:205:6;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;508:205:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;508:205:6;;-1:-1:-1;508:205:6;;-1:-1:-1;;;;;508:205:6:i;:::-;;;;;;;;;;;;;;;;;;659:77:7;;;:::i;:::-;;;;-1:-1:-1;;;;;659:77:7;;;;;;;;;;;;;;979:90;;;:::i;221:20:6:-;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;221:20:6;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;221:20:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1731:107:7;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1731:107:7;-1:-1:-1;;;;;1731:107:7;;:::i;188:27:6:-;;;:::i;:::-;;;;;;;;;;;;;;;;1423:137:7;863:9;:7;:9::i;:::-;855:18;;;;;;;;1505:6;;1484:40;;1521:1;;-1:-1:-1;;;;;1505:6:7;;1484:40;;1521:1;;1484:40;1534:6;:19;;-1:-1:-1;;1534:19:7;;;1423:137::o;508:205:6:-;581:4;27:10:-1;;23:18;;;45:23;;;565:4:6;581:16;;;;;23:18:-1;;581:16:6;;;;;;;;;;;;:::i;:::-;-1:-1:-1;;636:1:6;622:11;-1:-1:-1;;622:15:6;-1:-1:-1;607:30:6;;;652:33;;;;;;;;;;;;;;;;36:153:-1;66:2;58:11;;36:153;;176:10;;164:23;;-1:-1;;139:12;;;;98:2;89:12;;;;114;36:153;;;299:10;344;;263:2;259:12;;;;254:3;250:22;-1:-1;;246:30;311:9;;295:26;;;340:21;;377:20;;;;365:33;;652::6;;;;;;;;;;-1:-1:-1;652:33:6;;-1:-1:-1;;;652:33:6;-1:-1:-1;652:33:6;-1:-1:-1;702:4:6;508:205;;;:::o;659:77:7:-;723:6;;-1:-1:-1;;;;;723:6:7;659:77;;:::o;979:90::-;1056:6;;-1:-1:-1;;;;;1056:6:7;1042:10;:20;;979:90::o;221:20:6:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;221:20:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;221:20:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;1731:107:7:-;863:9;:7;:9::i;:::-;855:18;;;;;;;;1803:28;1822:8;1803:18;:28::i;:::-;1731:107;:::o;188:27:6:-;;;;:::o;1982:183:7:-;-1:-1:-1;;;;;2055:22:7;;;;2047:31;;;;;;2114:6;;2093:38;;-1:-1:-1;;;;;2093:38:7;;;;2114:6;;2093:38;;2114:6;;2093:38;2141:6;:17;;-1:-1:-1;;2141:17:7;-1:-1:-1;;;;;2141:17:7;;;;;;;;;;1982:183::o;252:47:4:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;252:47:4;;;-1:-1:-1;252:47:4;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;",
-    "source": "pragma solidity ^0.5.2;\n\nimport \"./Versioned.sol\";\nimport \"node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol\";\n\n/**\n * @title OwnableAsset\n * @dev Register whatever you own in the Ethereum blockchain\n * blockchainassetregistry.com\n */\ncontract OwnableAsset is Versioned, Ownable {\n}\n",
-    "sourcePath": "/Users/GustavoIbarra/Projects/Solidity/blockchain-asset-registry/contracts/OwnableAsset.sol",
-    "ast": {
-        "absolutePath": "/Users/GustavoIbarra/Projects/Solidity/blockchain-asset-registry/contracts/OwnableAsset.sol",
-        "exportedSymbols": {
-            "OwnableAsset": [
-                149
-            ]
-        },
-        "id": 150,
-        "nodeType": "SourceUnit",
-        "nodes": [
-            {
-                "id": 142,
-                "literals": [
-                    "solidity",
-                    "^",
-                    "0.5",
-                    ".2"
-                ],
-                "nodeType": "PragmaDirective",
-                "src": "0:23:4"
-            },
-            {
-                "absolutePath": "/Users/GustavoIbarra/Projects/Solidity/blockchain-asset-registry/contracts/Versioned.sol",
-                "file": "./Versioned.sol",
-                "id": 143,
-                "nodeType": "ImportDirective",
-                "scope": 150,
-                "sourceUnit": 260,
-                "src": "25:25:4",
-                "symbolAliases": [],
-                "unitAlias": ""
-            },
-            {
-                "absolutePath": "node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol",
-                "file": "node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol",
-                "id": 144,
-                "nodeType": "ImportDirective",
-                "scope": 150,
-                "sourceUnit": 369,
-                "src": "51:76:4",
-                "symbolAliases": [],
-                "unitAlias": ""
-            },
-            {
-                "baseContracts": [
-                    {
-                        "arguments": null,
-                        "baseName": {
-                            "contractScope": null,
-                            "id": 145,
-                            "name": "Versioned",
-                            "nodeType": "UserDefinedTypeName",
-                            "referencedDeclaration": 259,
-                            "src": "277:9:4",
-                            "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_Versioned_$259",
-                                "typeString": "contract Versioned"
-                            }
-                        },
-                        "id": 146,
-                        "nodeType": "InheritanceSpecifier",
-                        "src": "277:9:4"
-                    },
-                    {
-                        "arguments": null,
-                        "baseName": {
-                            "contractScope": null,
-                            "id": 147,
-                            "name": "Ownable",
-                            "nodeType": "UserDefinedTypeName",
-                            "referencedDeclaration": 368,
-                            "src": "288:7:4",
-                            "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_Ownable_$368",
-                                "typeString": "contract Ownable"
-                            }
-                        },
-                        "id": 148,
-                        "nodeType": "InheritanceSpecifier",
-                        "src": "288:7:4"
-                    }
-                ],
-                "contractDependencies": [
-                    37,
-                    259,
-                    368
-                ],
-                "contractKind": "contract",
-                "documentation": "@title OwnableAsset\n@dev Register whatever you own in the Ethereum blockchain\nblockchainassetregistry.com",
-                "fullyImplemented": true,
-                "id": 149,
-                "linearizedBaseContracts": [
-                    149,
-                    368,
-                    259,
-                    37
-                ],
-                "name": "OwnableAsset",
-                "nodeType": "ContractDefinition",
-                "nodes": [],
-                "scope": 150,
-                "src": "252:47:4"
-            }
-        ],
-        "src": "0:300:4"
-    },
-    "legacyAST": {
-        "absolutePath": "/Users/GustavoIbarra/Projects/Solidity/blockchain-asset-registry/contracts/OwnableAsset.sol",
-        "exportedSymbols": {
-            "OwnableAsset": [
-                149
-            ]
-        },
-        "id": 150,
-        "nodeType": "SourceUnit",
-        "nodes": [
-            {
-                "id": 142,
-                "literals": [
-                    "solidity",
-                    "^",
-                    "0.5",
-                    ".2"
-                ],
-                "nodeType": "PragmaDirective",
-                "src": "0:23:4"
-            },
-            {
-                "absolutePath": "/Users/GustavoIbarra/Projects/Solidity/blockchain-asset-registry/contracts/Versioned.sol",
-                "file": "./Versioned.sol",
-                "id": 143,
-                "nodeType": "ImportDirective",
-                "scope": 150,
-                "sourceUnit": 260,
-                "src": "25:25:4",
-                "symbolAliases": [],
-                "unitAlias": ""
-            },
-            {
-                "absolutePath": "node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol",
-                "file": "node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol",
-                "id": 144,
-                "nodeType": "ImportDirective",
-                "scope": 150,
-                "sourceUnit": 369,
-                "src": "51:76:4",
-                "symbolAliases": [],
-                "unitAlias": ""
-            },
-            {
-                "baseContracts": [
-                    {
-                        "arguments": null,
-                        "baseName": {
-                            "contractScope": null,
-                            "id": 145,
-                            "name": "Versioned",
-                            "nodeType": "UserDefinedTypeName",
-                            "referencedDeclaration": 259,
-                            "src": "277:9:4",
-                            "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_Versioned_$259",
-                                "typeString": "contract Versioned"
-                            }
-                        },
-                        "id": 146,
-                        "nodeType": "InheritanceSpecifier",
-                        "src": "277:9:4"
-                    },
-                    {
-                        "arguments": null,
-                        "baseName": {
-                            "contractScope": null,
-                            "id": 147,
-                            "name": "Ownable",
-                            "nodeType": "UserDefinedTypeName",
-                            "referencedDeclaration": 368,
-                            "src": "288:7:4",
-                            "typeDescriptions": {
-                                "typeIdentifier": "t_contract$_Ownable_$368",
-                                "typeString": "contract Ownable"
-                            }
-                        },
-                        "id": 148,
-                        "nodeType": "InheritanceSpecifier",
-                        "src": "288:7:4"
-                    }
-                ],
-                "contractDependencies": [
-                    37,
-                    259,
-                    368
-                ],
-                "contractKind": "contract",
-                "documentation": "@title OwnableAsset\n@dev Register whatever you own in the Ethereum blockchain\nblockchainassetregistry.com",
-                "fullyImplemented": true,
-                "id": 149,
-                "linearizedBaseContracts": [
-                    149,
-                    368,
-                    259,
-                    37
-                ],
-                "name": "OwnableAsset",
-                "nodeType": "ContractDefinition",
-                "nodes": [],
-                "scope": 150,
-                "src": "252:47:4"
-            }
-        ],
-        "src": "0:300:4"
-    },
-    "compiler": {
-        "name": "solc",
-        "version": "0.5.2+commit.1df8f40c.Emscripten.clang"
-    },
-    "networks": {},
-    "schemaVersion": "3.0.3",
-    "updatedAt": "2019-03-18T18:56:33.553Z",
-    "devdoc": {
-        "details": "Register whatever you own in the Ethereum blockchain blockchainassetregistry.com",
-        "methods": {
-            "appendData(string)": {
-                "details": "Add data to the _data array",
-                "params": {
-                    "_data": "string data"
-                }
-            },
-            "isOwner()": {
-                "return": "true if `msg.sender` is the owner of the contract."
-            },
-            "owner()": {
-                "return": "the address of the owner."
-            },
-            "renounceOwnership()": {
-                "details": "Allows the current owner to relinquish control of the contract. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
-            },
-            "transferOwnership(address)": {
-                "details": "Allows the current owner to transfer control of the contract to a newOwner.",
-                "params": {
-                    "newOwner": "The address to transfer ownership to."
-                }
-            }
-        },
-        "title": "OwnableAsset"
-    },
-    "userdoc": {
-        "methods": {
-            "renounceOwnership()": {
-                "notice": "Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
-            }
+      ],
+      "name": "appendData",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
         }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "getVersionIndex",
+      "outputs": [
+        {
+          "name": "count",
+          "type": "uint256"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": true,
+      "inputs": [
+        {
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "data",
+      "outputs": [
+        {
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "constant": false,
+      "inputs": [
+        {
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "fallback"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "name": "data",
+          "type": "string"
+        },
+        {
+          "indexed": false,
+          "name": "versionIndex",
+          "type": "uint256"
+        }
+      ],
+      "name": "AppendedData",
+      "type": "event"
     }
+  ],
+  "bytecode": "0x6080604081905260018054600160a060020a031916331790819055600160a060020a0316906000907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a36105f08061005b6000396000f3fe608060405234801561001057600080fd5b506004361061009a576000357c0100000000000000000000000000000000000000000000000000000000900480638f32d59b116100785780638f32d59b14610182578063cce33f871461018a578063f0ba8440146101a4578063f2fde38b146102365761009a565b8063715018a61461009c5780637a59dc80146100a45780638da5cb5b1461015e575b005b61009a61025c565b61014a600480360360208110156100ba57600080fd5b8101906020810181356401000000008111156100d557600080fd5b8201836020820111156100e757600080fd5b8035906020019184600183028401116401000000008311171561010957600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295506102c6945050505050565b604080519115158252519081900360200190f35b6101666103bd565b60408051600160a060020a039092168252519081900360200190f35b61014a6103cd565b6101926103de565b60408051918252519081900360200190f35b6101c1600480360360208110156101ba57600080fd5b50356103e8565b6040805160208082528351818301528351919283929083019185019080838360005b838110156101fb5781810151838201526020016101e3565b50505050905090810190601f1680156102285780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61009a6004803603602081101561024c57600080fd5b5035600160a060020a031661048f565b6102646103cd565b151561026f57600080fd5b600154604051600091600160a060020a0316907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a36001805473ffffffffffffffffffffffffffffffffffffffff19169055565b60008054600181018083558280528351909161030b917f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e56390910190602086019061052c565b50507ff473313a26f504e39f730d568ace3fcdeea7e5c8bcaa13fc520fb6fe4e5e3803826103376103de565b6040518080602001838152602001828103825284818151815260200191508051906020019080838360005b8381101561037a578181015183820152602001610362565b50505050905090810190601f1680156103a75780820380516001836020036101000a031916815260200191505b50935050505060405180910390a1506001919050565b600154600160a060020a03165b90565b600154600160a060020a0316331490565b6000546000190190565b60008054829081106103f657fe5b600091825260209182902001805460408051601f60026000196101006001871615020190941693909304928301859004850281018501909152818152935090918301828280156104875780601f1061045c57610100808354040283529160200191610487565b820191906000526020600020905b81548152906001019060200180831161046a57829003601f168201915b505050505081565b6104976103cd565b15156104a257600080fd5b6104ab816104ae565b50565b600160a060020a03811615156104c357600080fd5b600154604051600160a060020a038084169216907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a36001805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0392909216919091179055565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061056d57805160ff191683800117855561059a565b8280016001018555821561059a579182015b8281111561059a57825182559160200191906001019061057f565b506105a69291506105aa565b5090565b6103ca91905b808211156105a657600081556001016105b056fea165627a7a7230582018f35771e963c10911e45fdee77e066741b4be71a6aa4748cd71acee83c3db7c0029",
+  "deployedBytecode": "0x608060405234801561001057600080fd5b506004361061009a576000357c0100000000000000000000000000000000000000000000000000000000900480638f32d59b116100785780638f32d59b14610182578063cce33f871461018a578063f0ba8440146101a4578063f2fde38b146102365761009a565b8063715018a61461009c5780637a59dc80146100a45780638da5cb5b1461015e575b005b61009a61025c565b61014a600480360360208110156100ba57600080fd5b8101906020810181356401000000008111156100d557600080fd5b8201836020820111156100e757600080fd5b8035906020019184600183028401116401000000008311171561010957600080fd5b91908080601f0160208091040260200160405190810160405280939291908181526020018383808284376000920191909152509295506102c6945050505050565b604080519115158252519081900360200190f35b6101666103bd565b60408051600160a060020a039092168252519081900360200190f35b61014a6103cd565b6101926103de565b60408051918252519081900360200190f35b6101c1600480360360208110156101ba57600080fd5b50356103e8565b6040805160208082528351818301528351919283929083019185019080838360005b838110156101fb5781810151838201526020016101e3565b50505050905090810190601f1680156102285780820380516001836020036101000a031916815260200191505b509250505060405180910390f35b61009a6004803603602081101561024c57600080fd5b5035600160a060020a031661048f565b6102646103cd565b151561026f57600080fd5b600154604051600091600160a060020a0316907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908390a36001805473ffffffffffffffffffffffffffffffffffffffff19169055565b60008054600181018083558280528351909161030b917f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e56390910190602086019061052c565b50507ff473313a26f504e39f730d568ace3fcdeea7e5c8bcaa13fc520fb6fe4e5e3803826103376103de565b6040518080602001838152602001828103825284818151815260200191508051906020019080838360005b8381101561037a578181015183820152602001610362565b50505050905090810190601f1680156103a75780820380516001836020036101000a031916815260200191505b50935050505060405180910390a1506001919050565b600154600160a060020a03165b90565b600154600160a060020a0316331490565b6000546000190190565b60008054829081106103f657fe5b600091825260209182902001805460408051601f60026000196101006001871615020190941693909304928301859004850281018501909152818152935090918301828280156104875780601f1061045c57610100808354040283529160200191610487565b820191906000526020600020905b81548152906001019060200180831161046a57829003601f168201915b505050505081565b6104976103cd565b15156104a257600080fd5b6104ab816104ae565b50565b600160a060020a03811615156104c357600080fd5b600154604051600160a060020a038084169216907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e090600090a36001805473ffffffffffffffffffffffffffffffffffffffff1916600160a060020a0392909216919091179055565b828054600181600116156101000203166002900490600052602060002090601f016020900481019282601f1061056d57805160ff191683800117855561059a565b8280016001018555821561059a579182015b8281111561059a57825182559160200191906001019061057f565b506105a69291506105aa565b5090565b6103ca91905b808211156105a657600081556001016105b056fea165627a7a7230582018f35771e963c10911e45fdee77e066741b4be71a6aa4748cd71acee83c3db7c0029",
+  "sourceMap": "252:47:4:-;;;;;515:6:7;:19;;-1:-1:-1;;;;;;515:19:7;524:10;515:19;;;;;-1:-1:-1;;;;;582:6:7;;515;;549:40;;515:6;;549:40;252:47:4;;;;;;",
+  "deployedSourceMap": "252:47:4:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;252:47:4;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1423:137:7;;;:::i;459:170:6:-;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;459:170:6;;;;;;;;21:11:-1;5:28;;2:2;;;46:1;43;36:12;2:2;459:170:6;;35:9:-1;28:4;12:14;8:25;5:40;2:2;;;58:1;55;48:12;2:2;459:170:6;;;;;;100:9:-1;95:1;81:12;77:20;67:8;63:35;60:50;39:11;25:12;22:29;11:107;8:2;;;131:1;128;121:12;8:2;459:170:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;30:3:-1;22:6;14;1:33;99:1;81:16;;74:27;;;;-1:-1;459:170:6;;-1:-1:-1;459:170:6;;-1:-1:-1;;;;;459:170:6:i;:::-;;;;;;;;;;;;;;;;;;659:77:7;;;:::i;:::-;;;;-1:-1:-1;;;;;659:77:7;;;;;;;;;;;;;;979:90;;;:::i;701:99:6:-;;;:::i;:::-;;;;;;;;;;;;;;;;188:20;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;188:20:6;;:::i;:::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;8:100:-1;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;188:20:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;1731:107:7;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;-1:-1;1731:107:7;-1:-1:-1;;;;;1731:107:7;;:::i;1423:137::-;863:9;:7;:9::i;:::-;855:18;;;;;;;;1505:6;;1484:40;;1521:1;;-1:-1:-1;;;;;1505:6:7;;1484:40;;1521:1;;1484:40;1534:6;:19;;-1:-1:-1;;1534:19:7;;;1423:137::o;459:170:6:-;516:4;27:10:-1;;39:1;23:18;;45:23;;;532:16:6;;;;;23:18:-1;;532:16:6;;;;;;;;;;;;:::i;:::-;;;563:38;576:5;583:17;:15;:17::i;:::-;563:38;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;23:1:-1;8:100;33:3;30:1;27:10;8:100;;;90:11;;;84:18;71:11;;;64:39;52:2;45:10;8:100;;;12:14;563:38:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;618:4:6;459:170;;;:::o;659:77:7:-;723:6;;-1:-1:-1;;;;;723:6:7;659:77;;:::o;979:90::-;1056:6;;-1:-1:-1;;;;;1056:6:7;1042:10;:20;;979:90::o;701:99:6:-;749:10;778:11;-1:-1:-1;;778:15:6;;701:99::o;188:20::-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;;188:20:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;188:20:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o;1731:107:7:-;863:9;:7;:9::i;:::-;855:18;;;;;;;;1803:28;1822:8;1803:18;:28::i;:::-;1731:107;:::o;1982:183::-;-1:-1:-1;;;;;2055:22:7;;;;2047:31;;;;;;2114:6;;2093:38;;-1:-1:-1;;;;;2093:38:7;;;;2114:6;;2093:38;;2114:6;;2093:38;2141:6;:17;;-1:-1:-1;;2141:17:7;-1:-1:-1;;;;;2141:17:7;;;;;;;;;;1982:183::o;252:47:4:-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-1:-1:-1;252:47:4;;;-1:-1:-1;252:47:4;:::i;:::-;;;:::o;:::-;;;;;;;;;;;;;;;;;",
+  "source": "pragma solidity ^0.5.2;\n\nimport \"./Versioned.sol\";\nimport \"node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol\";\n\n/**\n * @title OwnableAsset\n * @dev Register whatever you own in the Ethereum blockchain\n * blockchainassetregistry.com\n */\ncontract OwnableAsset is Versioned, Ownable {\n}\n",
+  "sourcePath": "/Users/GustavoIbarra/Projects/Solidity/blockchain-asset-registry/contracts/OwnableAsset.sol",
+  "ast": {
+    "absolutePath": "/Users/GustavoIbarra/Projects/Solidity/blockchain-asset-registry/contracts/OwnableAsset.sol",
+    "exportedSymbols": {
+      "OwnableAsset": [
+        159
+      ]
+    },
+    "id": 160,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 152,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:4"
+      },
+      {
+        "absolutePath": "/Users/GustavoIbarra/Projects/Solidity/blockchain-asset-registry/contracts/Versioned.sol",
+        "file": "./Versioned.sol",
+        "id": 153,
+        "nodeType": "ImportDirective",
+        "scope": 160,
+        "sourceUnit": 286,
+        "src": "25:25:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "file": "node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "id": 154,
+        "nodeType": "ImportDirective",
+        "scope": 160,
+        "sourceUnit": 395,
+        "src": "51:76:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 155,
+              "name": "Versioned",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 285,
+              "src": "277:9:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Versioned_$285",
+                "typeString": "contract Versioned"
+              }
+            },
+            "id": 156,
+            "nodeType": "InheritanceSpecifier",
+            "src": "277:9:4"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 157,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 394,
+              "src": "288:7:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$394",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 158,
+            "nodeType": "InheritanceSpecifier",
+            "src": "288:7:4"
+          }
+        ],
+        "contractDependencies": [
+          47,
+          285,
+          394
+        ],
+        "contractKind": "contract",
+        "documentation": "@title OwnableAsset\n@dev Register whatever you own in the Ethereum blockchain\nblockchainassetregistry.com",
+        "fullyImplemented": true,
+        "id": 159,
+        "linearizedBaseContracts": [
+          159,
+          394,
+          285,
+          47
+        ],
+        "name": "OwnableAsset",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 160,
+        "src": "252:47:4"
+      }
+    ],
+    "src": "0:300:4"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/GustavoIbarra/Projects/Solidity/blockchain-asset-registry/contracts/OwnableAsset.sol",
+    "exportedSymbols": {
+      "OwnableAsset": [
+        159
+      ]
+    },
+    "id": 160,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 152,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".2"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:4"
+      },
+      {
+        "absolutePath": "/Users/GustavoIbarra/Projects/Solidity/blockchain-asset-registry/contracts/Versioned.sol",
+        "file": "./Versioned.sol",
+        "id": 153,
+        "nodeType": "ImportDirective",
+        "scope": 160,
+        "sourceUnit": 286,
+        "src": "25:25:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "absolutePath": "node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "file": "node_modules/openzeppelin-solidity/contracts/ownership/Ownable.sol",
+        "id": 154,
+        "nodeType": "ImportDirective",
+        "scope": 160,
+        "sourceUnit": 395,
+        "src": "51:76:4",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 155,
+              "name": "Versioned",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 285,
+              "src": "277:9:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Versioned_$285",
+                "typeString": "contract Versioned"
+              }
+            },
+            "id": 156,
+            "nodeType": "InheritanceSpecifier",
+            "src": "277:9:4"
+          },
+          {
+            "arguments": null,
+            "baseName": {
+              "contractScope": null,
+              "id": 157,
+              "name": "Ownable",
+              "nodeType": "UserDefinedTypeName",
+              "referencedDeclaration": 394,
+              "src": "288:7:4",
+              "typeDescriptions": {
+                "typeIdentifier": "t_contract$_Ownable_$394",
+                "typeString": "contract Ownable"
+              }
+            },
+            "id": 158,
+            "nodeType": "InheritanceSpecifier",
+            "src": "288:7:4"
+          }
+        ],
+        "contractDependencies": [
+          47,
+          285,
+          394
+        ],
+        "contractKind": "contract",
+        "documentation": "@title OwnableAsset\n@dev Register whatever you own in the Ethereum blockchain\nblockchainassetregistry.com",
+        "fullyImplemented": true,
+        "id": 159,
+        "linearizedBaseContracts": [
+          159,
+          394,
+          285,
+          47
+        ],
+        "name": "OwnableAsset",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 160,
+        "src": "252:47:4"
+      }
+    ],
+    "src": "0:300:4"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.2+commit.1df8f40c.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.3",
+  "updatedAt": "2019-03-19T01:44:45.116Z",
+  "devdoc": {
+    "details": "Register whatever you own in the Ethereum blockchain blockchainassetregistry.com",
+    "methods": {
+      "appendData(string)": {
+        "details": "Add data to the _data array",
+        "params": {
+          "_data": "string data"
+        }
+      },
+      "getVersionIndex()": {
+        "details": "Gets the current index of the data list"
+      },
+      "isOwner()": {
+        "return": "true if `msg.sender` is the owner of the contract."
+      },
+      "owner()": {
+        "return": "the address of the owner."
+      },
+      "renounceOwnership()": {
+        "details": "Allows the current owner to relinquish control of the contract. It will not be possible to call the functions with the `onlyOwner` modifier anymore."
+      },
+      "transferOwnership(address)": {
+        "details": "Allows the current owner to transfer control of the contract to a newOwner.",
+        "params": {
+          "newOwner": "The address to transfer ownership to."
+        }
+      }
+    },
+    "title": "OwnableAsset"
+  },
+  "userdoc": {
+    "methods": {
+      "renounceOwnership()": {
+        "notice": "Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+      }
+    }
+  }
 }

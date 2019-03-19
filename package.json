@@ -27,6 +27,7 @@
     "history": "^4.7.2",
     "https": "^1.0.0",
     "ipfs-http-client": "^30.1.0",
+    "iso-stream-http": "https://github.com/netpoe/iso-stream-http.git",
     "lodash": "^4.17.11",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
@@ -39,7 +40,7 @@
     "redux-thunk": "^2.3.0",
     "stream-buffers": "^3.0.2",
     "typescript": "^3.3.3333",
-    "web3": "^1.0.0-beta.48"
+    "web3": "1.0.0-beta.48"
   },
   "scripts": {
     "start": "react-scripts start",

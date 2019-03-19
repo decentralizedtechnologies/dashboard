@@ -6080,6 +6080,14 @@ iso-random-stream@^1.1.0:
   resolved "https://registry.yarnpkg.com/iso-random-stream/-/iso-random-stream-1.1.0.tgz#c1dc1bb43dd8da6524df9cbc6253b010806585c8"
   integrity sha512-ywSWt0KrWcsaK0jVoVJIR30rLyjg9Rw3k2Sm/qp+3tdtSV0SNH7L7KilKnENcENOSoJxDFvpt2idvuMMQohdCQ==
 
+"iso-stream-http@https://github.com/netpoe/iso-stream-http.git":
+  version "0.1.1"
+  resolved "https://github.com/netpoe/iso-stream-http.git#aa04b3dc2bbf712a865981daade46ac5e9fc950d"
+  dependencies:
+    builtin-status-codes "^3.0.0"
+    inherits "^2.0.1"
+    readable-stream "^3.1.1"
+
 iso-stream-http@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/iso-stream-http/-/iso-stream-http-0.1.1.tgz#f763eb63014cea781f9296073879eaec1be4f5ac"
@@ -11775,7 +11783,7 @@ web3-utils@1.0.0-beta.48:
     randomhex "0.1.5"
     utf8 "2.1.1"
 
-web3@^1.0.0-beta.48:
+web3@1.0.0-beta.48:
   version "1.0.0-beta.48"
   resolved "https://registry.yarnpkg.com/web3/-/web3-1.0.0-beta.48.tgz#66a3d29cdb40a0d2015cd7e5af081defaa2ec270"
   integrity sha512-/HfIaRQVScZv0iy6fnEZCsXQbbOmtEB08sa2YaCkRo8nqUQo1C+55VC5sXqjrwKaDs9Xf9qxVTiUUeTbKD+KYg==

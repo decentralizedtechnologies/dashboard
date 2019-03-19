@@ -26,13 +26,31 @@ export default class OwnableAssetContract {
     return this;
   }
 
-  public getVersionIndex(): Promise<number> {
-    return this.contract.methods.versionIndex().call();
+  public getVersionIndex(): Promise<any> {
+    return this.contract.methods.getVersionIndex().call(); 
   }
 
-  public getData(versionIndex: number): Array<Promise<string>> {
-    return map(Array.from(Array(versionIndex).keys()), (index: number) =>
-      this.contract.methods.data(index).call()
-    );
+  public getData(): Promise<string[]> {
+    let index = 0;
+    return new Promise((resolve, reject) => {
+      const result: string[] = [];
+      const call = async () => {
+        this.contract.methods
+          .data(index)
+          .call()
+          .then((data: any) => {
+            if (data) {
+              result.push(data);
+              index++;
+              call();
+            } else {
+              resolve(result);
+            }
+          }).catch((error: Error) => {
+            resolve(result);
+          });
+      };
+      call();
+    });
   }
 }

@@ -1,5 +1,4 @@
 import OwnableAssetRegistry from "contract/BAR/abi/OwnableAssetRegistry.json";
-import map from "lodash/map";
 import Web3Service from "service/Web3Service";
 import { TransactionReceipt } from "web3-core/types";
 import { Contract as Web3Contract } from "web3-eth-contract";
@@ -27,18 +26,8 @@ export default class OwnableAssetRegistryContract {
     return this;
   }
 
-  public getVersionIndex(): Promise<number> {
-    return this.contract.methods.versionIndex().call();
-  }
-
-  public getData(versionIndex: number): Array<Promise<string>> {
-    return map(Array.from(Array(versionIndex).keys()), (index: number) =>
-      this.contract.methods.data(index).call()
-    );
-  }
-
-  public newAsset(data: string): Promise<TransactionReceipt> {
-    return new Promise(async (resolve, reject) => {
+  public newAsset(data: string, onTxHash?: (hash: string) => void): Promise<TransactionReceipt> {
+    return new Promise((resolve, reject) => {
       const {
         send,
       } = this.contract.methods.newAsset(data);
@@ -47,7 +36,11 @@ export default class OwnableAssetRegistryContract {
         from,
       }).on("error", (error: Error) => {
         reject(error);
-      }).on("receipt", (receipt: TransactionReceipt) => {
+      }).on("transactionHash", (hash: string) => {
+        onTxHash(hash);
+      }).on("confirmation", (num: number, receipt: TransactionReceipt) => {
+        resolve(receipt);
+      }).then((receipt: TransactionReceipt) => {
         resolve(receipt);
       });
     });

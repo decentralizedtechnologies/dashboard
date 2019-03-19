@@ -12,6 +12,7 @@ export default {
   dropzoneFiles: [],
   files,
   assetReference: "",
+  txHash: "",
   versions: [],
   ...makeAssetOutput([{
     key: "",

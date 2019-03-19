@@ -8,12 +8,13 @@ import { BARAssetLookupRoute } from "page/routes";
 import { createAction } from "redux-actions";
 import IPFSService from "service/IpfsService";
 import { makeAssetOutput } from "./actions";
-import { BAR_SET_ASSET_REFERENCE, BAR_SET_ASSET_VERSIONS } from "./constants";
+import { BAR_SET_ASSET_REFERENCE, BAR_SET_ASSET_VERSIONS, BAR_SET_TX_HASH } from "./constants";
 import { IAssetData } from "./IStore";
 import { assetReferenceProp, fieldRowsProp, filesProp } from "./selectors";
 
 export const setAssetReferenceAction = createAction(BAR_SET_ASSET_REFERENCE);
 export const setAssetVersionsAction = createAction(BAR_SET_ASSET_VERSIONS);
+export const setTxHashAction = createAction(BAR_SET_TX_HASH);
 
 export const setAssetReference = (assetReference: string) => (
   (dispatch: any, getState: any) => {
@@ -36,8 +37,7 @@ export const getAssetDetails = () => (
       const contract = new OwnableAssetContract();
       await contract.web3.enableEthereumBrowser();
       contract.setAddress(assetReference);
-      const versionIndex = await contract.getVersionIndex();
-      const contractData = await Promise.all(contract.getData(versionIndex))
+      const contractData = await contract.getData();
       if (contractData.length === 0) {
         // TODO display that no contractData was found in the contract
         return;
@@ -72,9 +72,11 @@ export const publishAssetContract = () => (
       const {
         hash,
       } = await ipfsService.upload(Buffer.from(output.assetOutput as string));
-      const receipt = await contract.newAsset(hash);
+      const onTxHash = (txHash: string) => dispatch(setTxHashAction({ txHash }));
+      const receipt = await contract.newAsset(hash, onTxHash);
+      const [CreatedAssetLog] = receipt.logs;
       dispatch(setAssetReferenceAction({
-        assetReference: receipt.contractAddress,
+        assetReference: CreatedAssetLog.address,
       }));
       dispatch(push(BARAssetLookupRoute));
     } catch (error) {

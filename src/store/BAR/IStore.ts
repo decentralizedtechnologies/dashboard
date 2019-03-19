@@ -7,6 +7,7 @@ export default interface IStore {
   assetOutput: string;
   schemaOuput: string;
   assetReference: string;
+  txHash: string;
   versions: IAssetData[];
   isOutputOnDisplay: boolean;
   isPublishOnDisplay: boolean;
