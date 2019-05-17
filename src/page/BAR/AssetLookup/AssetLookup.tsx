@@ -1,4 +1,4 @@
-import { AppBar, FormControl, Grid, Input, InputLabel, MenuItem, Select, Tab, Tabs, withStyles } from "@material-ui/core";
+import { AppBar, FormControl, Grid, Hidden, Input, InputLabel, MenuItem, Select, Tab, Tabs, withStyles } from "@material-ui/core";
 import AppContainer from "component/AppContainer";
 import Button from "component/Button";
 import Container from "component/Container";
@@ -6,9 +6,11 @@ import Paper from "component/Paper";
 import Typography from "component/Typography";
 import PageTitle from "component/Typography/PageTitle";
 import "highlight.js/styles/dracula.css";
+import { Location } from "history";
 import map from "lodash/map";
+import qs from "qs";
 import React, { Component } from "react";
-import { IAssetData, IFieldRow } from "store/BAR/IStore";
+import { IAssetData, IFieldRow, IFile } from "store/BAR/IStore";
 import Header from "view/Header/Header";
 import Sidenav from "view/Sidenav/Sidenav";
 import TopBar from "view/TopBar/TopBar";
@@ -18,11 +20,33 @@ export interface IAssetLookupProps {
   classes?: any;
   assetReference: string;
   versions: IAssetData[];
+  location: Location;
   setAssetReference: (assetReference: string) => void;
   getAssetDetails: () => void;
 }
 
 class AssetLookup extends Component<IAssetLookupProps> {
+  public componentWillMount = () => {
+    this.getQueryParams();
+  }
+
+  public getQueryParams = () => {
+    const {
+      setAssetReference,
+      location,
+    } = this.props;
+
+    const {
+      assetReference,
+      blockchain,
+      network
+    } = qs.parse(location.search, { ignoreQueryPrefix: true });
+
+    if (assetReference) {
+      setAssetReference(assetReference);
+    }
+  }
+
   public componentDidMount = () => {
     const {
       getAssetDetails,
@@ -39,7 +63,9 @@ class AssetLookup extends Component<IAssetLookupProps> {
     } = this.props;
     return (
       <AppContainer>
-        <TopBar />
+        <Hidden smDown>
+          <TopBar />
+        </Hidden>
         <Header />
         <Sidenav />
         <Container yBottom={3}>
@@ -64,7 +90,7 @@ class AssetLookup extends Component<IAssetLookupProps> {
                   <InputLabel htmlFor="search">Asset Reference</InputLabel>
                   <Input
                     onChange={(e) => setAssetReference(e.currentTarget.value)}
-                    defaultValue={assetReference}
+                    value={assetReference}
                     id="search"
                     autoFocus
                   />
@@ -98,10 +124,10 @@ class AssetLookup extends Component<IAssetLookupProps> {
             <Container x={3} y={3} key={index}>
               <Container yBottom={3}>
                 <Grid container>
-                  {map(version.Files.value as string[], (hash: string, i: number) => (
+                  {map(version.Files.value as IFile[], (file: IFile, i: number) => (
                     <Grid item lg={4} key={i}>
                       <img
-                        src={`https://ipfs.infura.io/ipfs/${hash}`}
+                        src={`https://ipfs.infura.io/ipfs/${file.hash}`}
                         width="100%"
                         height="auto"
                       />

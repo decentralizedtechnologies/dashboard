@@ -1,3 +1,4 @@
+
 interface IRouteChild {
   [key: string]: string;
 }
@@ -7,7 +8,7 @@ interface IRoute {
   BAR: IRouteChild;
 }
 
-const routes: IRoute = {
+const routes = {
   BAR: {
     root: "/BAR",
     newAsset: "/new-asset",
@@ -20,8 +21,8 @@ export const route = (root: string, child: string): string => {
   return `${routes[root].root}${routes[root][child]}`;
 };
 
-export const BARNewAssetRoute = route("BAR", "newAsset");
-export const BARAssetDetailsRoute = route("BAR", "assetDetails");
-export const BARAssetLookupRoute = route("BAR", "assetLookup");
+export const BARNewAssetRoute = "/new-asset";
+export const BARAssetDetailsRoute = "/asset-details";
+export const BARAssetLookupRoute = "/asset-lookup";
 
 export default routes;

@@ -14,7 +14,7 @@ export default class OwnableAssetRegistryContract {
   public constructor() {
     this.contract = new this.web3.eth.Contract(
       OwnableAssetRegistry.abi as AbiItem[],
-      process.env.REACT_APP_BAR_OWNABLE_ASSET_REGISTRY_ADDRESS,
+      "0x7d8f9cd03fb83b60f75729521eddcd34db14521b",
       {
         data: OwnableAssetRegistry.bytecode,
       } as ContractOptions,
@@ -24,6 +24,10 @@ export default class OwnableAssetRegistryContract {
   public setAddress(address: string) {
     this.contract.options.address = address;
     return this;
+  }
+
+  public get from() {
+    return (this.web3.instance.givenProvider as any).selectedAddress;
   }
 
   public newAsset(data: string, onTxHash?: (hash: string) => void): Promise<TransactionReceipt> {

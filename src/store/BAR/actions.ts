@@ -1,10 +1,11 @@
 import { DropzoneFile } from "dropzone";
-import schemaGenerator from "generate-schema";
+import DateFormat from "lib/core/format/DateFormat";
 import compact from "lodash/compact";
+import moment from "moment";
 import { createAction } from "redux-actions";
 import IPFSService from "service/IpfsService";
 import { BAR_ADD_DROPZONE_FILE, BAR_ADD_FIELD_ROW, BAR_ADD_IPFS_FILE, BAR_REMOVE_DROPZONE_FILE, BAR_REMOVE_FIELD_ROW, BAR_TOGGLE_OUTPUT_VIEW, BAR_TOGGLE_PUBLISH_VIEW, BAR_UPDATE_FIELD_ROW } from "./constants";
-import IStore, { IFieldRow } from "./IStore";
+import IStore, { IAssetData, IFieldRow, IFile } from "./IStore";
 import { dropzoneFilesProp, fieldRowsProp, filesProp, isOutputOnDisplayProp, isPublishOnDisplayProp } from "./selectors";
 
 export const addFieldRowAction = createAction(BAR_ADD_FIELD_ROW);
@@ -16,16 +17,22 @@ export const addIpfsFileAction = createAction(BAR_ADD_IPFS_FILE);
 export const addDropzoneFileAction = createAction(BAR_ADD_DROPZONE_FILE);
 export const removeDropzoneFileAction = createAction(BAR_REMOVE_DROPZONE_FILE);
 
-export const makeAssetOutput = (fieldRows: IFieldRow[], files: IFieldRow): Partial<IStore> => {
+export const makeAssetOutput = (fieldRows: IFieldRow[], files: IFieldRow, metadata: any = {}): Partial<IStore> => {
   const asset = {
+    Metadata: {},
     Asset: fieldRows,
     Files: files,
-  };
-  const schema = schemaGenerator.json("OwnableAsset", asset);
-  asset["Schema"] = {
-    key: schema["$schema"],
-    value: schema,
-    type: "schema",
+  } as IAssetData;
+  const type = "OwnableAsset";
+  const blockchain = "ethereum";
+  const network = "ropsten";
+  const date = new DateFormat(moment().local())
+  asset["Metadata"] = {
+    type,
+    blockchain,
+    network,
+    createdAt: date.default(),
+    ...metadata,
   };
   return {
     fieldRows,
@@ -106,7 +113,9 @@ export const addFileToAssetOutput = (file: DropzoneFile) => (
         const {
           hash,
         } = await ipfsService.upload(Buffer.from(reader.result as ArrayBuffer));
-        (files.value as string[]).push(hash);
+        (files.value as IFile[]).push({
+          name, type, hash,
+        });
         dispatch(addIpfsFileAction({ files }));
         dispatch(addFieldRowAction(makeAssetOutput(fieldRows, files)));
       } catch (error) {

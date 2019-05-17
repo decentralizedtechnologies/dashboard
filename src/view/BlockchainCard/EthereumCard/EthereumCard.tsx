@@ -29,7 +29,11 @@ class EthereumCard extends Component<IEthereumCardProps> {
               <Typography variant="h5" component="h5" content="Ethereum" />
             </Grid>
           </Grid>
-          <Typography component="p" content="Store the data in a Solidity smart contract" />
+          <Typography
+            gutterBottom
+            component="p"
+            content="Store the data in a Solidity smart contract."
+          />
         </CardContent>
         <CardActions disableActionSpacing>
           <Grid container spacing={8}>

@@ -15,13 +15,18 @@ export default class Web3Service {
   constructor(network: string = process.env.REACT_APP_ETHEREUM_NETWORK) {
     this.network = network;
     const provider = new Web3.providers.HttpProvider(network);
-    this.instance = new Web3(provider, undefined, {});
+    this.instance = new Web3(provider);
     this.utils = this.instance.utils;
     this.eth = this.instance.eth;
   }
 
   public setProvider(p: Web3Provider) {
     this.instance.setProvider(p);
+    return this;
+  }
+
+  public setInfuraProvider() {
+    this.setProvider("https://mainnet.infura.io/v3/c7bc69147d4b4e47b67ed1c794464403");
     return this;
   }
 

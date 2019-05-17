@@ -14,14 +14,20 @@ export default interface IStore {
 }
 
 export interface IFieldRow {
-  [key: string]: string | string[];
+  [key: string]: string | string[] | IFile[];
   key: string;
-  value: string | string[];
+  value: string | string[] | IFile[];
   type: string;
 }
 
+export interface IFile {
+  name: string;
+  type: string;
+  hash: string;
+}
+
 export interface IAssetData {
-  Schema: IFieldRow;
+  Metadata: IFieldRow;
   Files: IFieldRow;
   Asset: IFieldRow[];
 }

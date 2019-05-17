@@ -35,7 +35,7 @@ export const getAssetDetails = () => (
     }
     try {
       const contract = new OwnableAssetContract();
-      await contract.web3.enableEthereumBrowser();
+      contract.web3.setInfuraProvider();
       contract.setAddress(assetReference);
       const contractData = await contract.getData();
       if (contractData.length === 0) {
@@ -65,10 +65,12 @@ export const publishAssetContract = () => (
     const ipfsService = new IPFSService();
     const fieldRows = fieldRowsProp(state);
     const files = filesProp(state);
-    const output = makeAssetOutput(fieldRows, files);
     try {
       const contract = new OwnableAssetRegistryContract();
       await contract.web3.enableEthereumBrowser();
+      const output = makeAssetOutput(fieldRows, files, {
+        from: contract.from,
+      });
       const {
         hash,
       } = await ipfsService.upload(Buffer.from(output.assetOutput as string));

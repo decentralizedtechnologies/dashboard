@@ -4,6 +4,7 @@ import Drawer from "component/Drawer";
 import ListItemText from "component/Drawer/ListItemText";
 import RouterLink from "component/RouterLink";
 import Typography from "component/Typography";
+import breakpoint from "lib/core/styles/mediaQueries";
 import { BARAssetLookupRoute, BARNewAssetRoute } from "page/routes";
 import React, { Component } from "react";
 import styles from "./styles";
@@ -21,10 +22,10 @@ class Sidenav extends Component<ISidenavProps> {
     return (
       <Drawer
         variant="persistent"
-        open
+        open={breakpoint.up("sm")}
       >
         <div className={classnames(classes.toolbarHeight, classes.topbarHeight)} />
-        <List>
+        {/* <List>
           <ListItem button>
             <ListItemText
               icon={<img
@@ -48,8 +49,8 @@ class Sidenav extends Component<ISidenavProps> {
               secondary="Crowdsales Catalog"
             />
           </ListItem>
-        </List>
-        <List>
+        </List> */}
+        {/* <List>
           <ListItem button>
             <ListItemText
               icon={<img
@@ -73,7 +74,7 @@ class Sidenav extends Component<ISidenavProps> {
               secondary="Crowdsales Catalog"
             />
           </ListItem>
-        </List>
+        </List> */}
         <List>
           <ListItem button>
             <ListItemText
@@ -98,11 +99,11 @@ class Sidenav extends Component<ISidenavProps> {
               secondary={<RouterLink to={BARAssetLookupRoute} content="Asset Lookup" />}
             />
           </ListItem>
-          <ListItem button>
+          {/* <ListItem button>
             <ListItemText
               secondary="Schemas"
             />
-          </ListItem>
+          </ListItem> */}
         </List>
       </Drawer>
     );
